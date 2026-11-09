@@ -53,9 +53,9 @@ $panel_transition_duration: 250ms; // same as the overview transition duration
   }
 
   @if $opacity == 'solid' {
-    background-color: $panel_bg;
+    background-color: $panel_bg !important;
   } @else {
-    background-color: $panel_bg_color;
+    background-color: $panel_bg_color !important;
   }
 
   @if $panel_style == 'compact' {
@@ -63,9 +63,11 @@ $panel_transition_duration: 250ms; // same as the overview transition duration
     border-radius: 0;
     height: $medium_size - 2px;
   } @else {
-    border-radius: $material_radius;
-    margin: $container_padding / 2;
+    border-radius: $material_radius !important;
+    margin: $container_padding / 2 !important;
     height: $medium_size + 2px;
+    border: 1px solid if($panel == 'light', rgba(black, 0.12), rgba(white, 0.12)) !important;
+    box-shadow: 0 3px 10px rgba(black, 0.12) !important;
   }
 
   #panelLeft, #panelCenter { // spacing between activities<>app menu and such
@@ -86,10 +88,15 @@ $panel_transition_duration: 250ms; // same as the overview transition duration
   .panel-button {
     -natural-hpadding: $minimum_hpadding * 2;
     -minimum-hpadding: $minimum_hpadding * 2;
-    font-weight: normal;
-    color: $panel_secondary_fg_color;
+    font-weight: 500;
+    color: $panel_secondary_fg_color !important;
     transition-duration: 150ms;
     text-shadow: none;
+
+    StLabel {
+      padding: 0;
+      color: $panel_secondary_fg_color !important;
+    }
 
     @if $window == 'round' {
       border: 1px solid transparent !important;
@@ -109,16 +116,14 @@ $panel_transition_duration: 250ms; // same as the overview transition duration
       box-shadow: none !important;
     }
 
-    StLabel { padding: 0; }
-
     &:hover {
-      color: $panel_secondary_fg_color;
-      background-color: $panel_divider_color;
+      color: $panel_fg_color !important;
+      background-color: if($panel == 'light', rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.15)) !important;
     }
 
     &:active, &:checked, &:focus {
-      color: $panel_fg_color;
-      background-color: $panel_track_color;
+      color: $panel_fg_color !important;
+      background-color: if($panel == 'light', rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.3)) !important;
     }
 
     &:hover, &:active, &:overview, &:focus, &:checked {
@@ -169,7 +174,8 @@ $panel_transition_duration: 250ms; // same as the overview transition duration
       }
 
       .clock {
-        color: $panel_secondary_fg_color;
+        color: $panel_secondary_fg_color !important;
+        font-weight: bold;
         transition-duration: 150ms;
         border: none;
         border-radius: 0;
@@ -183,6 +189,7 @@ $panel_transition_duration: 250ms; // same as the overview transition duration
     // status area icons
     .system-status-icon {
       icon-size: 16px;
+      color: $panel_secondary_fg_color !important;
       padding: $container_padding;
       margin: 0 $container_padding / 2;
     }

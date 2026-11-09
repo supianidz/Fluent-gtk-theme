@@ -282,7 +282,7 @@ while [[ "$#" -gt 0 ]]; do
       shift 2
       ;;
     -n|--name)
-      _name="$2"
+      name="$2"
       shift 2
       ;;
     -l|--libadwaita)

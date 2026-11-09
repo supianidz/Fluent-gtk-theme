@@ -464,22 +464,22 @@
 #panel.dark-panel,
 #panel.transparent-panel {
   .panel-button {
-    color: $inverse_secondary_fg_color !important;
+    color: if($panel == 'light', $panel_secondary_fg_color, $inverse_secondary_fg_color) !important;
 
     &.clock-display {
       .clock {
-        color: $inverse_secondary_fg_color !important;
+        color: if($panel == 'light', $panel_secondary_fg_color, $inverse_secondary_fg_color) !important;
       }
     }
 
     &:hover {
-      color: $inverse_secondary_fg_color !important;
-      background-color: $inverse_divider_color !important;
+      color: if($panel == 'light', $panel_secondary_fg_color, $inverse_secondary_fg_color) !important;
+      background-color: if($panel == 'light', $panel_divider_color, $inverse_divider_color) !important;
     }
 
     &:active, &:checked, &:focus {
-      color: $inverse_fg_color !important;
-      background-color: $inverse_track_color !important;
+      color: if($panel == 'light', $panel_fg_color, $inverse_fg_color) !important;
+      background-color: if($panel == 'light', $panel_track_color, $inverse_track_color) !important;
     }
 
     &:hover, &:active, &:overview, &:focus, &:checked {
